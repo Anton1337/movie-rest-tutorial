@@ -56,7 +56,6 @@ app.post('/movies', (req, res) => {
 app.put('/movies/:id', (req, res) => {
   const movieID = parseInt(req.params.id);
   const movie = movieDB.find((movie) => movie.id === movieID);
-  console.log(movieDB, '---', movie);
   if (!movie) {
     return res
       .status(404)
