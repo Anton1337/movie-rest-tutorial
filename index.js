@@ -4,23 +4,26 @@ const express = require('express');
 // Initialize express app.
 const app = express();
 
-//Middleware
+//Middleware.
 app.use(express.json());
 
-// Method for generating ID's
+// Method for generating ID's.
 let currentID = 1;
 generateMovieID = () => {
   return currentID++;
 };
 
-// "Database"
+// "Database".
 movieDB = [];
 
-// CRUD Routes
+// CRUD Routes.
+
+// Get all movies.
 app.get('/movies', (req, res) => {
   return res.status(200).json(movieDB);
 });
 
+// Get movie by ID.
 app.get('/movies/:id', (req, res) => {
   const movieID = parseInt(req.params.id);
   const movie = movieDB.find((movie) => movie.id === movieID);
@@ -33,6 +36,7 @@ app.get('/movies/:id', (req, res) => {
   return res.status(200).json(movie);
 });
 
+// Create new movie.
 app.post('/movies', (req, res) => {
   const { title, length, genre, rating } = req.body;
   const movieID = generateMovieID();
@@ -48,6 +52,7 @@ app.post('/movies', (req, res) => {
   res.status(201).json(newMovie);
 });
 
+// Update movie by ID.
 app.put('/movies/:id', (req, res) => {
   const movieID = parseInt(req.params.id);
   const movie = movieDB.find((movie) => movie.id === movieID);
@@ -73,6 +78,7 @@ app.put('/movies/:id', (req, res) => {
   return res.status(200).json(editedMovie);
 });
 
+// Delete movie by ID.
 app.delete('/movies/:id', (req, res) => {
   const movieID = parseInt(req.params.id);
   const movie = movieDB.find((movie) => movie.id === movieID);
