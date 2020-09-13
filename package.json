@@ -1,0 +1,17 @@
+{
+  "name": "build",
+  "version": "1.0.0",
+  "description": "1. Create package.json using `npm init -y`\r 2. Install packages `express`, `OTHER-PACKAGE` using `npm i express OTHER-PACKAGE`",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Anton Andrésen <anton.andresen@hotmail.com> (anton.best)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}
